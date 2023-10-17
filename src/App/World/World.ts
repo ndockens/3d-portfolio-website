@@ -1,4 +1,4 @@
-import Environment from "./Environment";
+import Environment from './Environment'
 
 export default class World {
     constructor() {
