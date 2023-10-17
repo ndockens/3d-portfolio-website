@@ -16,9 +16,9 @@ export default class App {
         this.loop()
     }
 
-    loop() {
-        Global.camera.loop()
-        Global.renderer.loop()
+    loop(): void {
+        Global.camera.onLoop()
+        Global.renderer.onLoop()
         window.requestAnimationFrame(() => this.loop())
     }
 }

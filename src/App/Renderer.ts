@@ -12,39 +12,39 @@ export default class Renderer {
         this.setWindowResizeListener()
     }
 
-    private createRenderer() {
+    private createRenderer(): WebGLRenderer {
         return new WebGLRenderer({
             canvas: Global.canvas,
             antialias: true,
         })
     }
 
-    private initializeRendererProperties() {
+    private initializeRendererProperties(): void {
         this.setSize()
         this.setPixelRatio()
         this.enableShadowMapping()
     }
 
-    private setSize() {
+    private setSize(): void {
         this.instance.setSize(window.innerWidth, window.innerHeight)
     }
 
-    private setPixelRatio() {
+    private setPixelRatio(): void {
         this.instance.setPixelRatio(Math.min(window.devicePixelRatio, this.maxPixelRatio))
     }
 
-    private enableShadowMapping() {
+    private enableShadowMapping(): void {
         this.instance.shadowMap.enabled = true
     }
 
-    private setWindowResizeListener() {
+    private setWindowResizeListener(): void {
         window.addEventListener('resize', () => {
             this.setSize()
             this.setPixelRatio()
         })
     }
 
-    loop() {
+    onLoop(): void {
         this.instance.render(Global.scene, Global.camera.instance)
     }
 }
