@@ -1,4 +1,4 @@
-import { Scene } from 'three'
+import { Scene, TextureLoader } from 'three'
 
 import Camera from './Camera'
 import Renderer from './Renderer'

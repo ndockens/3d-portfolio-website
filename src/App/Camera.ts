@@ -4,11 +4,11 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import Global from './Utilities/Global'
 
 export default class Camera {
-    private readonly farPlane: number = 100
     private readonly fieldOfView: number = 35
-    private readonly nearPlane: number = 1
-    private readonly startPositionY: number = 5
-    private readonly startPositionZ: number = 10
+    private readonly nearPlane: number = 0.1
+    private readonly farPlane: number = 200
+    private readonly startPositionY: number = 70
+    private readonly startPositionZ: number = 120
 
     private controls: OrbitControls
     instance: PerspectiveCamera

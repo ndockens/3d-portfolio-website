@@ -4,19 +4,29 @@ import {
     MathUtils,
     Mesh,
     MeshStandardMaterial,
-    PlaneGeometry, Scene
+    PlaneGeometry,
+    Scene,
 } from 'three'
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
 
 import Global from '../Utilities/Global'
 
 export default class Environment {
+    private gltfLoader: GLTFLoader
     private scene: Scene
 
     constructor() {
         this.scene = Global.scene
+
+        this.gltfLoader = new GLTFLoader()
+        this.gltfLoader.load('/models/sci_fi_room.glb', (loadedAsset) => {
+            loadedAsset.scene.scale.setScalar(0.1)
+            loadedAsset.scene.rotateY(MathUtils.degToRad(45))
+            this.scene.add(loadedAsset.scene)
+        })
         
-        this.addFloor()
-        this.addCenterpiece()
+        // this.addFloor()
+        // this.addCenterpiece()
         this.addLights()
     }
 
