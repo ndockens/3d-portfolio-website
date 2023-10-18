@@ -6,8 +6,8 @@ import Global from './Utilities/Global'
 export default class Camera {
     private readonly fieldOfView: number = 35
     private readonly nearPlane: number = 0.1
-    private readonly farPlane: number = 200
-    private readonly startPositionY: number = 70
+    private readonly farPlane: number = 300
+    private readonly startPositionY: number = 50
     private readonly startPositionZ: number = 120
 
     private controls: Controls
