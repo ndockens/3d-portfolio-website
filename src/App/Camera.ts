@@ -5,7 +5,7 @@ import Global from './Utilities/Global'
 
 export default class Camera {
     private readonly fieldOfView: number = 35
-    private readonly nearPlane: number = 0.1
+    private readonly nearPlane: number = 1
     private readonly farPlane: number = 300
     private readonly startPositionY: number = 50
     private readonly startPositionZ: number = 120
@@ -20,16 +20,16 @@ export default class Camera {
     }
 
     private createInstance(): PerspectiveCamera {
-        const camera = new PerspectiveCamera(
-            this.fieldOfView,
-            this.calculateAspectRatio(),
-            this.nearPlane,
-            this.farPlane
-        )
+        const camera = new PerspectiveCamera(this.fieldOfView,this.calculateAspectRatio())
+        this.setAdditionalProperties(camera)
+        return camera
+    }
+
+    private setAdditionalProperties(camera: PerspectiveCamera): void {
+        camera.near = this.nearPlane
+        camera.far = this.farPlane
         camera.position.y = this.startPositionY
         camera.position.z = this.startPositionZ
-
-        return camera
     }
 
     private calculateAspectRatio(): number {

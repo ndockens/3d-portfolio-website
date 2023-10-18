@@ -16,16 +16,19 @@ export default class Controls {
     }
 
     private createInstance(camera: Camera, canvas: HTMLElement): OrbitControls {
-        const instance = new OrbitControls(camera, canvas)
-        instance.enableDamping = true
-        instance.minDistance = this.minDistance
-        instance.maxDistance = this.maxDistance
-        instance.minPolarAngle = MathUtils.degToRad(this.minPolarAngleDegrees)
-        instance.maxPolarAngle = MathUtils.degToRad(this.maxPolarAngleDegrees)
-        instance.minAzimuthAngle = MathUtils.degToRad(this.minAzimuthAngleDegrees)
-        instance.maxAzimuthAngle = MathUtils.degToRad(this.maxAzimuthAngleDegrees)
+        const controls = new OrbitControls(camera, canvas)
+        this.setAdditionalProperties(controls)
+        return controls
+    }
 
-        return instance
+    private setAdditionalProperties(controls: OrbitControls): void {
+        controls.enableDamping = true
+        controls.minDistance = this.minDistance
+        controls.maxDistance = this.maxDistance
+        controls.minPolarAngle = MathUtils.degToRad(this.minPolarAngleDegrees)
+        controls.maxPolarAngle = MathUtils.degToRad(this.maxPolarAngleDegrees)
+        controls.minAzimuthAngle = MathUtils.degToRad(this.minAzimuthAngleDegrees)
+        controls.maxAzimuthAngle = MathUtils.degToRad(this.maxAzimuthAngleDegrees)
     }
 
     onLoop(): void {
