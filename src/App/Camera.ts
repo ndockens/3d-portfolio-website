@@ -1,14 +1,21 @@
-import { PerspectiveCamera } from 'three'
+import { MathUtils, PerspectiveCamera } from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
 import Global from './Utilities/Global'
 
 export default class Camera {
+    // Camera
     private readonly fieldOfView: number = 35
     private readonly nearPlane: number = 0.1
     private readonly farPlane: number = 200
     private readonly startPositionY: number = 70
     private readonly startPositionZ: number = 120
+
+    // Controls
+    private readonly minPolarAngleDegrees: number = 0
+    private readonly maxPolarAngleDegrees: number = 90
+    private readonly minAzimuthAngleDegrees: number = -90
+    private readonly maxAzimuthAngleDegrees: number = 90
 
     private controls: OrbitControls
     instance: PerspectiveCamera
@@ -35,6 +42,10 @@ export default class Camera {
     private createControls(): OrbitControls {
         const controls = new OrbitControls(this.instance, Global.canvas)
         controls.enableDamping = true
+        controls.minPolarAngle = MathUtils.degToRad(this.minPolarAngleDegrees)
+        controls.maxPolarAngle = MathUtils.degToRad(this.maxPolarAngleDegrees)
+        controls.minAzimuthAngle = MathUtils.degToRad(this.minAzimuthAngleDegrees)
+        controls.maxAzimuthAngle = MathUtils.degToRad(this.maxAzimuthAngleDegrees)
 
         return controls
     }
