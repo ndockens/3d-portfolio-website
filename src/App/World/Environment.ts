@@ -2,6 +2,7 @@ import {
     AmbientLight,
     MathUtils,
     Scene,
+    SpotLight,
 } from 'three'
 import { GLTF, GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
 
@@ -29,7 +30,18 @@ export default class Environment {
     }
 
     private addLights(): void {
-        const ambientLight = new AmbientLight(0xffffff, 0.7)
+        this.addAmbientLight()
+        this.addSpotLight()        
+    }
+
+    private addAmbientLight(): void {
+        const ambientLight = new AmbientLight(0xffffff, 0.2)
         this.scene.add(ambientLight)
+    }
+
+    private addSpotLight(): void {
+        const spotLight = new SpotLight(0xffffff, 500, 50)
+        spotLight.position.y = 32
+        this.scene.add(spotLight)
     }
 }
