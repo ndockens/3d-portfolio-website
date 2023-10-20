@@ -1,8 +1,9 @@
 import { Scene } from 'three'
 
-import World from '../World/World'
 import Camera from '../Camera'
 import Renderer from '../Renderer'
+import MessageHandler from '../UI/MessageHandler'
+import World from '../World/World'
 
 export default class Global {
     static canvas: any
@@ -10,4 +11,5 @@ export default class Global {
     static world: World
     static camera: Camera
     static renderer: Renderer
+    static messageHandler: MessageHandler
 }
