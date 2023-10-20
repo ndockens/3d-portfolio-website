@@ -2,3 +2,22 @@ body {
     margin: 0;
     overflow: hidden;
 }
+
+.initial-message {
+    color: #ffffff;
+    left: 45%;
+    top: 0%;
+    opacity: 0;
+    position: absolute;
+    text-align: center;
+    transition: opacity 3s ease;
+    z-index: 999;
+}
+
+.fadeIn {
+    opacity: 1;
+}
+
+.fadeOut {
+    opacity: 0;
+}
