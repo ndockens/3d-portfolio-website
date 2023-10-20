@@ -1,6 +1,9 @@
 import {
     AmbientLight,
     MathUtils,
+    Mesh,
+    MeshStandardMaterial,
+    PlaneGeometry,
     Scene,
     SpotLight,
 } from 'three'
@@ -18,19 +21,30 @@ export default class Environment {
         this.scene = Global.scene
         this.gltfLoader = new GLTFLoader()
 
+        this.addGround()
         this.addRoom()
         this.addLights()
     }
 
+    private addGround(): void {
+        const geometry = new PlaneGeometry(1000, 1000)
+        const material = new MeshStandardMaterial({ color: 0xffffff })
+        const ground = new Mesh(geometry, material)
+        ground.position.y = -18
+        ground.rotateX(MathUtils.degToRad(-90))
+        this.scene.add(ground)
+    }
+
     private async addRoom(): Promise<void> {
-        const loadedAsset: GLTF = await this.gltfLoader.loadAsync(this.pathToRoomModel)
-        loadedAsset.scene.scale.setScalar(20)
-        loadedAsset.scene.rotateY(MathUtils.degToRad(-45))
-        this.scene.add(loadedAsset.scene)
+        const roomModel: GLTF = await this.gltfLoader.loadAsync(this.pathToRoomModel)
+        roomModel.scene.position.y = -15
+        roomModel.scene.scale.setScalar(20)
+        roomModel.scene.rotateY(MathUtils.degToRad(-45))
+        this.scene.add(roomModel.scene)
     }
 
     private addLights(): void {
-        this.addAmbientLight()
+        // this.addAmbientLight()
         this.addSpotLight()
     }
 
@@ -40,7 +54,7 @@ export default class Environment {
     }
 
     private addSpotLight(): void {
-        const spotLight = new SpotLight(0xffffff, 700, 50, MathUtils.degToRad(70))
+        const spotLight = new SpotLight(0xffffff, 1000, 100, MathUtils.degToRad(70))
         spotLight.position.y = 40
         this.scene.add(spotLight) 
     }

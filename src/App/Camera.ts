@@ -7,7 +7,7 @@ export default class Camera {
     private readonly fieldOfView: number = 35
     private readonly nearPlane: number = 1
     private readonly farPlane: number = 300
-    private readonly startPositionY: number = 50
+    private readonly startPositionY: number = 60
     private readonly startPositionZ: number = 120
 
     private controls: Controls
