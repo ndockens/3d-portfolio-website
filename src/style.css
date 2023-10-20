@@ -11,14 +11,13 @@ body {
     opacity: 0;
 }
 
-.initial-message {
+.message {
     color: #ffffff;
     font-family: 'Lucida Console', 'Courier New', monospace;
     left: 0;
     right: 0;
     top: 0;
     margin: auto;
-    opacity: 0;
     position: absolute;
     text-align: center;
     transition: opacity 3s ease;
