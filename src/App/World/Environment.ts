@@ -9,7 +9,7 @@ import { GLTF, GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
 import Global from '../Utilities/Global'
 
 export default class Environment {
-    private readonly pathToRoomModel: string = '/models/sci_fi_room.glb'
+    private readonly pathToRoomModel: string = '/models/isometric_room.glb'
     
     private gltfLoader: GLTFLoader
     private scene: Scene
@@ -24,14 +24,14 @@ export default class Environment {
 
     private async addRoom(): Promise<void> {
         const loadedAsset: GLTF = await this.gltfLoader.loadAsync(this.pathToRoomModel)
-        loadedAsset.scene.scale.setScalar(0.1)
-        loadedAsset.scene.rotateY(MathUtils.degToRad(45))
+        loadedAsset.scene.scale.setScalar(20)
+        loadedAsset.scene.rotateY(MathUtils.degToRad(-45))
         this.scene.add(loadedAsset.scene)
     }
 
     private addLights(): void {
         this.addAmbientLight()
-        this.addSpotLight()        
+        this.addSpotLight()
     }
 
     private addAmbientLight(): void {
