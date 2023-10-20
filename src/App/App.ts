@@ -3,6 +3,7 @@ import { Scene } from 'three'
 import Camera from './Camera'
 import Renderer from './Renderer'
 import MessageHandler from './UI/MessageHandler'
+import ModalHandler from './UI/ModalHandler'
 import Global from './Utilities/Global'
 import World from './World/World'
 
@@ -16,6 +17,7 @@ export default class App {
         Global.camera = new Camera()
         Global.renderer = new Renderer()
         Global.messageHandler = new MessageHandler()
+        Global.modalHandler = new ModalHandler()
 
         this.displayInitialMessage()
         this.loop()
