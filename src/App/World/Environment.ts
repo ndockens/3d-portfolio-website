@@ -21,7 +21,6 @@ export default class Environment {
         this.scene = Global.scene
         this.gltfLoader = new GLTFLoader()
 
-        this.addGround()
         this.addRoom()
         this.addLights()
     }
@@ -44,7 +43,7 @@ export default class Environment {
     }
 
     private addLights(): void {
-        // this.addAmbientLight()
+        this.addAmbientLight()
         this.addSpotLight()
     }
 
@@ -54,8 +53,8 @@ export default class Environment {
     }
 
     private addSpotLight(): void {
-        const spotLight = new SpotLight(0xffffff, 1000, 100, MathUtils.degToRad(70))
-        spotLight.position.y = 40
+        const spotLight = new SpotLight(0xffffff, 700, 100, MathUtils.degToRad(70))
+        spotLight.position.y = 25
         this.scene.add(spotLight) 
     }
 }
