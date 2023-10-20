@@ -35,13 +35,13 @@ export default class Environment {
     }
 
     private addAmbientLight(): void {
-        const ambientLight = new AmbientLight(0xffffff, 0.2)
+        const ambientLight = new AmbientLight(0xffffff, 0.5)
         this.scene.add(ambientLight)
     }
 
     private addSpotLight(): void {
-        const spotLight = new SpotLight(0xffffff, 500, 50)
-        spotLight.position.y = 32
-        this.scene.add(spotLight)
+        const spotLight = new SpotLight(0xffffff, 700, 50, MathUtils.degToRad(70))
+        spotLight.position.y = 40
+        this.scene.add(spotLight) 
     }
 }
