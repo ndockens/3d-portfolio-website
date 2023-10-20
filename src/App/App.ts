@@ -1,4 +1,4 @@
-import { Scene, TextureLoader } from 'three'
+import { Scene } from 'three'
 
 import Camera from './Camera'
 import Renderer from './Renderer'
@@ -7,6 +7,8 @@ import Global from './Utilities/Global'
 import World from './World/World'
 
 export default class App {
+    private readonly initialMessage: string = 'Nathan Dockens - Software Engineer'
+
     constructor() {
         Global.canvas = document.querySelector('canvas.threejs')
         Global.scene = new Scene()
@@ -20,7 +22,9 @@ export default class App {
     }
 
     displayInitialMessage(): void {
-        Global.messageHandler.display('Nathan Dockens - Software Engineer')
+        setTimeout(() => {
+            Global.messageHandler.display(this.initialMessage)
+        }, 500)
     }
 
     loop(): void {
