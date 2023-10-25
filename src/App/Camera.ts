@@ -63,8 +63,8 @@ export default class Camera {
     }
 
     private lookAtPortrait(): void {
-        this.lookAt(new Vector3(30, 5, 0))
-        this.moveTo(new Vector3(20, 0, 20))
+        this.lookAt(new Vector3(24, 8, 0))
+        this.moveTo(new Vector3(0, 0, 0))
     }
 
     private goToDefaultPosition(): void {
