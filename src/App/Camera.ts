@@ -68,7 +68,7 @@ export default class Camera {
     }
 
     private goToDefaultPosition(): void {
-        this.lookAt(new Vector3(0, 0, 0))
+        this.lookAt(this.controls.initialTarget)
         this.moveTo(this.startPosition)
     }
 
