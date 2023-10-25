@@ -10,6 +10,7 @@ export default class Camera {
     private readonly farPlane: number = 300
     private readonly startPosition: Vector3 = new Vector3(0, 60, 140)
     private readonly tweenEasingType = TWEEN.Easing.Quintic.InOut
+    private readonly tweenTransitionSpeed = 2000
 
     controls: Controls
     instance: PerspectiveCamera
@@ -19,6 +20,11 @@ export default class Camera {
         this.controls = new Controls(this.instance, Global.canvas)
         this.addWindowResizeListener()
         this.addKeyPressListener()
+    }
+
+    onLoop(): void {
+        TWEEN.update()
+        this.controls.onLoop()
     }
 
     private createInstance(): PerspectiveCamera {
@@ -56,34 +62,27 @@ export default class Camera {
         })
     }
 
-    private goToDefaultPosition(): void {
-        const focalPointTween = new TWEEN.Tween(this.controls.instance.target)
-            .to(new Vector3(0, 0, 0), 2000)
-            .easing(this.tweenEasingType)
-
-        const positionTween = new TWEEN.Tween(this.instance.position)
-            .to(this.startPosition)
-            .easing(this.tweenEasingType)
-
-        focalPointTween.start()
-        positionTween.start()
-    }
-
     private lookAtPortrait(): void {
-        const focalPointTween = new TWEEN.Tween(this.controls.instance.target)
-            .to(new Vector3(30, 5, 0), 2000)
-            .easing(this.tweenEasingType)
-
-        const positionTween = new TWEEN.Tween(this.instance.position)
-            .to(new Vector3(20, 0, 20), 2000)
-            .easing(this.tweenEasingType)
-
-        focalPointTween.start()
-        positionTween.start()
+        this.lookAt(new Vector3(30, 5, 0))
+        this.moveTo(new Vector3(20, 0, 20))
     }
 
-    onLoop(): void {
-        TWEEN.update()
-        this.controls.onLoop()
+    private goToDefaultPosition(): void {
+        this.lookAt(new Vector3(0, 0, 0))
+        this.moveTo(this.startPosition)
+    }
+
+    private lookAt(target: Vector3): void {
+        new TWEEN.Tween(this.controls.instance.target)
+            .to(target, this.tweenTransitionSpeed)
+            .easing(this.tweenEasingType)
+            .start()
+    }
+
+    private moveTo(position: Vector3): void {
+        new TWEEN.Tween(this.instance.position)
+            .to(position, this.tweenTransitionSpeed)
+            .easing(this.tweenEasingType)
+            .start()
     }
 }
