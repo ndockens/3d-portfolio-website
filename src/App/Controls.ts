@@ -9,7 +9,7 @@ export default class Controls {
     private readonly minAzimuthAngleDegrees: number = -45
     private readonly maxAzimuthAngleDegrees: number = 45
 
-    private instance: OrbitControls
+    instance: OrbitControls
 
     constructor(camera: Camera, canvas: HTMLElement) {
         this.instance = this.createInstance(camera, canvas)
@@ -23,7 +23,7 @@ export default class Controls {
 
     private setAdditionalProperties(controls: OrbitControls): void {
         controls.enableDamping = true
-        controls.minDistance = this.minDistance
+        // controls.minDistance = this.minDistance
         controls.maxDistance = this.maxDistance
         controls.minPolarAngle = MathUtils.degToRad(this.minPolarAngleDegrees)
         controls.maxPolarAngle = MathUtils.degToRad(this.maxPolarAngleDegrees)
