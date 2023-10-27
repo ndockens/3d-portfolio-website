@@ -1,6 +1,7 @@
 import { PerspectiveCamera, Vector3 } from 'three'
 import * as TWEEN from '@tweenjs/tween.js'
 
+import CameraKeyFrameHandler from './CameraKeyFrameHandler'
 import Controls from './Controls'
 import Global from './Utilities/Global'
 
@@ -11,22 +12,8 @@ export default class Camera {
     private readonly startPosition: Vector3 = new Vector3(0, 60, 140)
     private readonly tweenEasingType = TWEEN.Easing.Quintic.InOut
     private readonly tweenTransitionSpeed = 2000
-    private readonly keyFrames: any[] = [
-        {
-            id: 1,
-            position: new Vector3(0, 60, 140),
-            target: new Vector3(0, 0, 0),
-            triggerType: 'keyPress',
-            triggerValue: 'Escape'
-        },
-        {
-            id: 2,
-            position: new Vector3(0, 0, 0),
-            target: new Vector3(24, 8, 0),
-            triggerType: 'objectClick',
-            triggerValue: 'Cube037_1'
-        }
-    ]
+
+    private keyFrameHandler: CameraKeyFrameHandler
 
     controls: Controls
     instance: PerspectiveCamera
@@ -34,9 +21,23 @@ export default class Camera {
     constructor() {
         this.instance = this.createInstance()
         this.controls = new Controls(this.instance, Global.canvas)
-        
+        this.keyFrameHandler = new CameraKeyFrameHandler(this)
+
         this.addWindowResizeListener()
-        this.addKeyFrameListeners()
+    }
+
+    moveTo(position: Vector3): void {
+        new TWEEN.Tween(this.instance.position)
+            .to(position, this.tweenTransitionSpeed)
+            .easing(this.tweenEasingType)
+            .start()
+    }
+
+    lookAt(target: Vector3): void {
+        new TWEEN.Tween(this.controls.instance.target)
+            .to(target, this.tweenTransitionSpeed)
+            .easing(this.tweenEasingType)
+            .start()
     }
 
     onLoop(): void {
@@ -65,37 +66,5 @@ export default class Camera {
             this.instance.aspect = this.calculateAspectRatio()
             this.instance.updateProjectionMatrix()
         })
-    }
-
-    private addKeyFrameListeners(): void {
-        for (const frame of this.keyFrames) {
-            if (frame.triggerType === 'objectClick') {
-                Global.objectInteractivityHandler.addClickListener(frame.triggerValue, () => {
-                    this.moveTo(frame.position)
-                    this.lookAt(frame.target)
-                })
-            } else if (frame.triggerType === 'keyPress') {
-                window.addEventListener('keydown', (e) => {
-                    if (e.key === frame.triggerValue) {
-                        this.moveTo(frame.position)
-                        this.lookAt(frame.target)
-                    }
-                })
-            }
-        }
-    }
-
-    private lookAt(target: Vector3): void {
-        new TWEEN.Tween(this.controls.instance.target)
-            .to(target, this.tweenTransitionSpeed)
-            .easing(this.tweenEasingType)
-            .start()
-    }
-
-    private moveTo(position: Vector3): void {
-        new TWEEN.Tween(this.instance.position)
-            .to(position, this.tweenTransitionSpeed)
-            .easing(this.tweenEasingType)
-            .start()
     }
 }
