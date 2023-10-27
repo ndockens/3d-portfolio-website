@@ -29,7 +29,7 @@ export default class Controls {
 
     private setAdditionalProperties(controls: OrbitControls): void {
         controls.enableDamping = true
-        controls.target = this.initialTarget
+        controls.target.copy(this.initialTarget)
         // controls.minDistance = this.minDistance
         controls.maxDistance = this.maxDistance
         controls.minPolarAngle = MathUtils.degToRad(this.minPolarAngleDegrees)
