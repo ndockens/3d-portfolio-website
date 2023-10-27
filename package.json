@@ -10,7 +10,12 @@
     "test": "jest"
   },
   "devDependencies": {
+    "@babel/core": "^7.23.2",
+    "@babel/preset-env": "^7.23.2",
+    "@babel/preset-typescript": "^7.23.2",
+    "@types/jest": "^29.5.6",
     "@types/three": "^0.157.0",
+    "babel-jest": "^29.7.0",
     "jest": "^29.7.0",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
