@@ -19,7 +19,7 @@ export default class Camera {
         this.instance = this.createInstance()
         this.controls = new Controls(this.instance, Global.canvas)
         this.addWindowResizeListener()
-        this.addClickListeners()
+        this.addObjectClickListeners()
         this.addKeyPressListener()
     }
 
@@ -51,7 +51,7 @@ export default class Camera {
         })
     }
 
-    private addClickListeners(): void {
+    private addObjectClickListeners(): void {
         Global.objectInteractivityHandler.addClickListener('Cube037_1', () => {
             this.lookAtPortrait()
         })
