@@ -4,17 +4,19 @@ import Global from './Utilities/Global';
 import Pointer from './Utilities/Pointer';
 
 export default class ObjectInteractivityHandler {
+    private objectIntersects: Intersection<Object3D<Object3DEventMap>>[]
     private pointer: Pointer
-    private pointerIntersects: Intersection<Object3D<Object3DEventMap>>[]
     private raycaster: Raycaster
+    private scene: Scene
 
     constructor() {
+        this.objectIntersects = []
         this.pointer = new Pointer();
-        this.pointerIntersects = []
         this.raycaster = new Raycaster()
+        this.scene = Global.world.environment.scene
 
         this.pointer.addMovementListener(() => {
-            this.checkForIntersectionsWithObjects()
+            this.updateObjectIntersects()
             this.updatePointerStyle()
         })
     }
@@ -25,19 +27,10 @@ export default class ObjectInteractivityHandler {
                 listener()
         })
     }
-
-    private objectClicked(name: string): boolean {
-        return this.getIntersectedObject(name) !== undefined
-    }
-
-    private getIntersectedObject(name: string): Object3D<Object3DEventMap> | undefined {
-        return this.pointerIntersects.find(i => i.object.name === name)?.object
-    }
     
-    private checkForIntersectionsWithObjects(): void {
+    private updateObjectIntersects(): void {
         this.raycaster.setFromCamera(this.pointer.position, Global.camera.instance)
-        const scene: Scene = Global.world.environment.scene
-        this.pointerIntersects = this.raycaster.intersectObjects(scene.children)
+        this.objectIntersects = this.raycaster.intersectObjects(this.scene.children)
     }
 
     private updatePointerStyle(): void {
@@ -45,5 +38,13 @@ export default class ObjectInteractivityHandler {
             this.pointer.setCursorStyle('pointer')
         else
             this.pointer.setCursorStyle('default')
+    }
+
+    private objectClicked(name: string): boolean {
+        return this.getIntersectedObject(name) !== undefined
+    }
+
+    private getIntersectedObject(name: string): Object3D<Object3DEventMap> | undefined {
+        return this.objectIntersects.find(i => i.object.name === name)?.object
     }
 }
