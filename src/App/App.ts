@@ -5,6 +5,7 @@ import Renderer from './Renderer'
 import MessageHandler from './UI/MessageHandler'
 import ModalHandler from './UI/ModalHandler'
 import Global from './Utilities/Global'
+import PointerHandler from './Utilities/PointerHandler'
 import World from './World/World'
 
 export default class App {
@@ -18,6 +19,7 @@ export default class App {
         Global.renderer = new Renderer()
         Global.messageHandler = new MessageHandler()
         Global.modalHandler = new ModalHandler()
+        Global.pointerHandler = new PointerHandler()
 
         this.displayInitialMessage()
         this.loop()

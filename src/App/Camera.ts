@@ -19,7 +19,7 @@ export default class Camera {
         this.instance = this.createInstance()
         this.controls = new Controls(this.instance, Global.canvas)
         this.addWindowResizeListener()
-        this.addKeyPressListener()
+        this.addMouseClickListener()
     }
 
     onLoop(): void {
@@ -50,15 +50,12 @@ export default class Camera {
         })
     }
 
-    private addKeyPressListener(): void {
-        window.addEventListener('keypress', (e) => {
-            switch (e.key) {
-                case 'p':
-                    this.lookAtPortrait()
-                    break;
-                default:
-                    this.goToDefaultPosition()
-            }
+    private addMouseClickListener(): void {
+        window.addEventListener('click', (e) => {
+            if (Global.pointerHandler.isTouchingObject('Cube037_1'))
+                this.lookAtPortrait()
+            else
+                this.goToDefaultPosition()
         })
     }
 

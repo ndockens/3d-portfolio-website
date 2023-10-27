@@ -15,7 +15,7 @@ export default class Environment {
     private readonly pathToRoomModel: string = '/models/isometric_room.glb'
     
     private gltfLoader: GLTFLoader
-    private scene: Scene
+    scene: Scene
 
     constructor() {
         this.scene = Global.scene

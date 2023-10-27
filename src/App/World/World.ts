@@ -1,7 +1,9 @@
 import Environment from './Environment'
 
 export default class World {
+    environment: Environment
+    
     constructor() {
-        new Environment()
+        this.environment = new Environment()
     }
 }
