@@ -1,8 +1,8 @@
 import { Intersection, Object3D, Object3DEventMap, Raycaster, Scene, Vector2 } from 'three'
 
-import Global from './Global';
+import Global from './Utilities/Global';
 
-export default class PointerHandler {
+export default class ObjectInteractivityHandler {
     private pointer: Vector2
     private pointerIntersects: Intersection<Object3D<Object3DEventMap>>[]
     private raycaster: Raycaster
@@ -19,7 +19,14 @@ export default class PointerHandler {
         })
     }
 
-    isTouchingObject(name: string): boolean {
+    addClickListener(objectName: string, listener: () => any): void {
+        window.addEventListener('click', () => {
+            if (this.objectClicked(objectName))
+                listener()
+        })
+    }
+
+    private objectClicked(name: string): boolean {
         return this.getIntersectedObject(name) !== undefined
     }
 
@@ -40,7 +47,7 @@ export default class PointerHandler {
     }
 
     private updatePointerStyle(): void {
-        if (this.isTouchingObject('Cube037_1'))
+        if (this.objectClicked('Cube037_1'))
             document.body.style.cursor = 'pointer'
         else
             document.body.style.cursor = 'default'
