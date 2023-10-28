@@ -39,8 +39,8 @@ export default class Environment {
     private addPortraitImage(): void {
         const element = document.createElement('div')
         element.innerHTML = 'Hello World'
-        element.style.width = '30px'
-        element.style.height = '60px'
+        element.style.width = '300px'
+        element.style.height = '600px'
         element.style.background = '#ff0000'
 
         const object = new CSS3DObject(element)
@@ -53,6 +53,8 @@ export default class Environment {
 
         const material = new MeshStandardMaterial()
         material.blending = NoBlending
+        material.opacity = 0
+        material.transparent = true
 
         const mesh = new Mesh(geometry, material)
         
