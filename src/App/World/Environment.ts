@@ -3,6 +3,7 @@ import {
     MathUtils,
     Mesh,
     MeshStandardMaterial,
+    NoBlending,
     PlaneGeometry,
     Scene,
     SpotLight,
@@ -10,6 +11,7 @@ import {
 import { GLTF, GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
 
 import Global from '../Utilities/Global'
+import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js'
 
 export default class Environment {
     private readonly pathToRoomModel: string = '/models/isometric_room.glb'
@@ -22,16 +24,8 @@ export default class Environment {
         this.gltfLoader = new GLTFLoader()
 
         this.addRoom()
+        this.addPortraitImage()
         this.addLights()
-    }
-
-    private addGround(): void {
-        const geometry = new PlaneGeometry(1000, 1000)
-        const material = new MeshStandardMaterial({ color: 0xffffff })
-        const ground = new Mesh(geometry, material)
-        ground.position.y = -18
-        ground.rotateX(MathUtils.degToRad(-90))
-        this.scene.add(ground)
     }
 
     private async addRoom(): Promise<void> {
@@ -40,6 +34,33 @@ export default class Environment {
         roomModel.scene.scale.setScalar(20)
         roomModel.scene.rotateY(MathUtils.degToRad(-45))
         this.scene.add(roomModel.scene)
+    }
+
+    private addPortraitImage(): void {
+        const element = document.createElement('div')
+        element.innerHTML = 'Hello World'
+        element.style.width = '30px'
+        element.style.height = '60px'
+        element.style.background = '#ff0000'
+
+        const object = new CSS3DObject(element)
+        object.position.set(25.6, 8.4, -2.4)
+        object.rotation.set(MathUtils.degToRad(0), -0.78, 0)
+
+        Global.cssScene.add(object);
+
+        const geometry = new PlaneGeometry(7.5, 14.5)
+
+        const material = new MeshStandardMaterial()
+        material.blending = NoBlending
+
+        const mesh = new Mesh(geometry, material)
+        
+        mesh.position.copy(object.position);
+        mesh.rotation.copy(object.rotation);
+        mesh.scale.copy(object.scale);
+
+        this.scene.add(mesh);
     }
 
     private addLights(): void {

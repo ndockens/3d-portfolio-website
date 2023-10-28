@@ -10,6 +10,7 @@ import World from '../World/World'
 export default class Global {
     static canvas: any
     static scene: Scene
+    static cssScene: Scene
     static world: World
     static camera: Camera
     static renderer: Renderer

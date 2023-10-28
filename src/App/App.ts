@@ -14,6 +14,7 @@ export default class App {
     constructor() {
         Global.canvas = document.querySelector('canvas.threejs')
         Global.scene = new Scene()
+        Global.cssScene = new Scene()
         Global.world = new World()
         Global.objectInteractivityHandler = new ObjectInteractivityHandler()
         Global.camera = new Camera()
