@@ -39,9 +39,11 @@ export default class Environment {
     private addPortraitImage(): void {
         const element = document.createElement('div')
         element.innerHTML = 'Hello World'
-        element.style.width = '300px'
-        element.style.height = '600px'
+        element.style.width = '7.5px'
+        element.style.height = '14.5px'
         element.style.background = '#ff0000'
+        element.style.color = '#000000'
+        element.style.fontSize = '0.5px'
 
         const object = new CSS3DObject(element)
         object.position.set(25.6, 8.4, -2.4)
@@ -52,9 +54,9 @@ export default class Environment {
         const geometry = new PlaneGeometry(7.5, 14.5)
 
         const material = new MeshStandardMaterial()
-        material.blending = NoBlending
-        material.opacity = 0
-        material.transparent = true
+        // material.blending = NoBlending
+        // material.opacity = 0
+        // material.transparent = true
 
         const mesh = new Mesh(geometry, material)
         

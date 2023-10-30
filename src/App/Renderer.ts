@@ -14,6 +14,7 @@ export default class Renderer {
         this.cssInstance = new CSS3DRenderer()
         this.cssInstance.domElement.style.position = 'absolute'
         this.cssInstance.domElement.style.top = '0px'
+        document.querySelector('body')?.appendChild(this.cssInstance.domElement);
         
         this.initializeRendererProperties()
         this.setWindowResizeListener()
