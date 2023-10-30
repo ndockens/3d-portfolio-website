@@ -20,7 +20,7 @@ export default class Camera {
     
     constructor() {
         this.instance = this.createInstance()
-        this.controls = new Controls(this.instance, Global.canvas)
+        this.controls = new Controls(this.instance, Global.cssRenderer.instance.domElement)
         this.keyFrameHandler = new CameraKeyFrameHandler(this)
 
         this.addWindowResizeListener()
@@ -46,7 +46,7 @@ export default class Camera {
     }
 
     private createInstance(): PerspectiveCamera {
-        const camera = new PerspectiveCamera(this.fieldOfView,this.calculateAspectRatio())
+        const camera = new PerspectiveCamera(this.fieldOfView, this.calculateAspectRatio())
         this.setAdditionalProperties(camera)
         return camera
     }

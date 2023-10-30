@@ -51,20 +51,20 @@ export default class Environment {
 
         Global.cssScene.add(object);
 
-        const geometry = new PlaneGeometry(7.5, 14.5)
+        // const geometry = new PlaneGeometry(7.5, 14.5)
 
-        const material = new MeshStandardMaterial()
+        // const material = new MeshStandardMaterial()
         // material.blending = NoBlending
         // material.opacity = 0
         // material.transparent = true
 
-        const mesh = new Mesh(geometry, material)
+        // const mesh = new Mesh(geometry, material)
         
-        mesh.position.copy(object.position);
-        mesh.rotation.copy(object.rotation);
-        mesh.scale.copy(object.scale);
+        // mesh.position.copy(object.position);
+        // mesh.rotation.copy(object.rotation);
+        // mesh.scale.copy(object.scale);
 
-        this.scene.add(mesh);
+        // this.scene.add(mesh);
     }
 
     private addLights(): void {

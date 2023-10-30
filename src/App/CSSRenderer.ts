@@ -1,15 +1,15 @@
-import { WebGLRenderer } from 'three'
+import { CSS3DRenderer } from 'three/addons/renderers/CSS3DRenderer.js'
 
 import Global from './Utilities/Global'
 
-export default class Renderer {
-    private readonly antiAlias: boolean = true
-    private readonly maxPixelRatio: number = 2
+export default class CSSRenderer {
+    private readonly cssPosition: string = 'absolute'
+    private readonly cssTop: string = '0'
 
-    instance: WebGLRenderer
+    instance: CSS3DRenderer
 
     constructor() {
-        this.instance = new WebGLRenderer({ antialias: this.antiAlias })
+        this.instance = new CSS3DRenderer()
         
         this.initializeProperties()
         this.addRendererElementToWebPage()
@@ -17,25 +17,17 @@ export default class Renderer {
     }
 
     onLoop(): void {
-        this.instance.render(Global.scene, Global.camera.instance)
+        this.instance.render(Global.cssScene, Global.camera.instance)
     }
 
     private initializeProperties(): void {
         this.setSize()
-        this.setPixelRatio()
-        this.enableShadowMapping()
+        this.instance.domElement.style.position = this.cssPosition
+        this.instance.domElement.style.top = this.cssTop
     }
 
     private setSize(): void {
         this.instance.setSize(window.innerWidth, window.innerHeight)
-    }
-
-    private setPixelRatio(): void {
-        this.instance.setPixelRatio(Math.min(window.devicePixelRatio, this.maxPixelRatio))
-    }
-
-    private enableShadowMapping(): void {
-        this.instance.shadowMap.enabled = true
     }
 
     private addRendererElementToWebPage(): void {
@@ -45,7 +37,6 @@ export default class Renderer {
     private setWindowResizeListener(): void {
         window.addEventListener('resize', () => {
             this.setSize()
-            this.setPixelRatio()
         })
     }
 }
