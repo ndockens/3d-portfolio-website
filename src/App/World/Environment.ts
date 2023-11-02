@@ -14,7 +14,7 @@ import Global from '../Utilities/Global'
 import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js'
 
 export default class Environment {
-    private readonly pathToRoomModel: string = '/models/isometric_room.glb'
+    private readonly pathToRoomModel: string = '/models/bedroom.glb'
     
     private gltfLoader: GLTFLoader
     scene: Scene
@@ -32,7 +32,7 @@ export default class Environment {
         const roomModel: GLTF = await this.gltfLoader.loadAsync(this.pathToRoomModel)
         roomModel.scene.position.y = -15
         roomModel.scene.scale.setScalar(20)
-        roomModel.scene.rotateY(MathUtils.degToRad(-45))
+        roomModel.scene.rotateY(MathUtils.degToRad(45))
         this.scene.add(roomModel.scene)
     }
 
