@@ -24,14 +24,14 @@ export default class Environment {
         this.gltfLoader = new GLTFLoader()
 
         this.addRoom()
-        this.addPortraitImage()
+        // this.addPortraitImage()
         this.addLights()
     }
 
     private async addRoom(): Promise<void> {
         const roomModel: GLTF = await this.gltfLoader.loadAsync(this.pathToRoomModel)
         roomModel.scene.position.y = -15
-        roomModel.scene.scale.setScalar(20)
+        roomModel.scene.scale.setScalar(15)
         roomModel.scene.rotateY(MathUtils.degToRad(45))
         this.scene.add(roomModel.scene)
     }
@@ -78,8 +78,8 @@ export default class Environment {
     }
 
     private addSpotLight(): void {
-        const spotLight = new SpotLight(0xffffff, 700, 100, MathUtils.degToRad(70))
-        spotLight.position.y = 25
+        const spotLight = new SpotLight(0xffffff, 1000, 100, MathUtils.degToRad(70))
+        spotLight.position.y = 48
         this.scene.add(spotLight) 
     }
 }
