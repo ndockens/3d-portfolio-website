@@ -9,7 +9,7 @@ export default class Camera {
     private readonly fieldOfView: number = 35
     private readonly nearPlane: number = 1
     private readonly farPlane: number = 300
-    private readonly startPosition: Vector3 = new Vector3(0, 60, 140)
+    private readonly startPosition: Vector3 = new Vector3(0, 100, 200)
     private readonly tweenEasingType = TWEEN.Easing.Quintic.InOut
     private readonly tweenTransitionSpeed = 2000
 
