@@ -1,10 +1,13 @@
 import {
     AmbientLight,
+    Color,
+    DirectionalLight,
     MathUtils,
     Mesh,
     MeshStandardMaterial,
     NoBlending,
     PlaneGeometry,
+    PointLight,
     Scene,
     SpotLight,
 } from 'three'
@@ -14,6 +17,8 @@ import Global from '../Utilities/Global'
 import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js'
 
 export default class Environment {
+    private readonly backgroundColorCode: number = 0xaaccff
+    private readonly ambientLightColorCode: number = 0xffffff
     private readonly pathToRoomModel: string = '/models/secret-room.glb'
     
     private gltfLoader: GLTFLoader
@@ -22,10 +27,13 @@ export default class Environment {
     constructor() {
         this.scene = Global.scene
         this.gltfLoader = new GLTFLoader()
-
+        // this.setSceneBackground()
         this.addRoom()
-        // this.addPortraitImage()
         this.addLights()
+    }
+
+    private setSceneBackground(): void {
+        this.scene.background = new Color(this.backgroundColorCode)
     }
 
     private async addRoom(): Promise<void> {
@@ -68,18 +76,32 @@ export default class Environment {
     }
 
     private addLights(): void {
-        this.addAmbientLight()
-        this.addSpotLight()
+        // this.addAmbientLight()
+        // this.addSpotLight()
+        this.addPointLight()
+        // this.addDirectionalLight()
     }
 
     private addAmbientLight(): void {
-        const ambientLight = new AmbientLight(0xffffff, 0.5)
+        const ambientLight = new AmbientLight(this.ambientLightColorCode, 1)
         this.scene.add(ambientLight)
     }
 
     private addSpotLight(): void {
-        const spotLight = new SpotLight(0xffffff, 1000, 100, MathUtils.degToRad(70))
-        spotLight.position.y = 48
+        const spotLight = new SpotLight(0xffffff, 3000, 100, MathUtils.degToRad(70))
+        spotLight.position.y = 50
         this.scene.add(spotLight) 
+    }
+
+    private addPointLight(): void {
+        const pointLight = new PointLight(0xffffff, 2000)
+        pointLight.position.y = 30
+        this.scene.add(pointLight) 
+    }
+
+    private addDirectionalLight(): void {
+        const directionalLight = new DirectionalLight(0xffffff, 2)
+        directionalLight.position.x = 50
+        this.scene.add(directionalLight) 
     }
 }
