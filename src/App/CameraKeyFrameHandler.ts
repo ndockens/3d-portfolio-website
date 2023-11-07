@@ -15,17 +15,19 @@ export default class CameraKeyFrameHandler {
     private readonly keyFrames: CameraKeyFrame[] = [
         {
             id: 1,
-            position: new Vector3(0, 60, 140),
-            target: new Vector3(0, 0, 0),
+            position: new Vector3(0, 100, 200),
+            target: new Vector3(0, 10, 0),
             triggerType: 'keyPress',
             triggerValue: 'Escape',
         },
         {
             id: 2,
             position: new Vector3(0, 0, 0),
-            target: new Vector3(24, 8, 0),
-            triggerType: 'objectClick',
-            triggerValue: 'Cube037_1',
+            target: new Vector3(-10, 10, -20),
+            // triggerType: 'objectClick',
+            // triggerValue: 'monitor',
+            triggerType: 'keyPress',
+            triggerValue: 'a',
         }
     ]
 
