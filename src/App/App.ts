@@ -4,6 +4,7 @@ import Camera from './Camera'
 import ObjectInteractivityHandler from './ObjectInteractivityHandler'
 import Renderer from './Renderer'
 import CSSRenderer from './CSSRenderer'
+import OverlayHandler from './UI/OverlayHandler'
 import MessageHandler from './UI/MessageHandler'
 import ModalHandler from './UI/ModalHandler'
 import Global from './Utilities/Global'
@@ -20,6 +21,7 @@ export default class App {
         Global.renderer = new Renderer()
         Global.cssRenderer = new CSSRenderer()
         Global.camera = new Camera()
+        Global.overlayHandler = new OverlayHandler()
         Global.messageHandler = new MessageHandler()
         Global.modalHandler = new ModalHandler()
 
