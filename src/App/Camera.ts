@@ -1,12 +1,9 @@
 import { PerspectiveCamera, Vector3 } from 'three'
-// import * as TWEEN from '@tweenjs/tween.js'
+import * as TWEEN from '@tweenjs/tween.js'
 
 // import CameraKeyFrameHandler from './CameraKeyFrameHandler'
 import Controls from './Controls'
 import Global from './Utilities/Global'
-
-// Using require() as workaround for issue with tween.js typings
-const TWEEN: any = require('@tweenjs/tween.js')
 
 export default class Camera {
     private readonly fieldOfView: number = 35
