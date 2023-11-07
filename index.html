@@ -10,6 +10,14 @@
   <body>
     <script type="module" src="/src/main.ts"></script>
 
+    <script type="text/javascript">
+      function start() {
+        const overlay = document.getElementsByClassName('overlay')[0]
+        overlay.style.opacity = '0'
+        overlay.style.display = 'none'
+      }
+    </script>
+
     <div class="message"></div>
 
     <div id="myModal" class="modal">
@@ -21,6 +29,13 @@
         <span class="close">X</span>
       </div>
     </div>
+
+  <div class="overlay">
+    <div class="overlay-content">
+      <button class="start-button" onclick="start()">PROCEED</button>
+      <div class="terms-disclaimer">By using or accessing this site, you agree to the <a href="#">terms and conditions</a>.</div>
+    </div>
+  </div>
 
   </body>
 </html>
