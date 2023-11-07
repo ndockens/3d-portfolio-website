@@ -2,7 +2,7 @@ import { Camera, MathUtils, Vector3 } from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
 export default class Controls {
-    private readonly minDistance: number = 80
+    // private readonly minDistance: number = 80
     private readonly maxDistance: number = 200
     private readonly minPolarAngleDegrees: number = 30
     private readonly maxPolarAngleDegrees: number = 90
