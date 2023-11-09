@@ -3,10 +3,10 @@ import {
     // Color,
     // DirectionalLight,
     MathUtils,
-    // Mesh,
-    // MeshStandardMaterial,
-    // NoBlending,
-    // PlaneGeometry,
+    Mesh,
+    MeshLambertMaterial,
+    NoBlending,
+    PlaneGeometry,
     PointLight,
     Scene,
     // SpotLight,
@@ -14,6 +14,7 @@ import {
 import { GLTF, GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
 
 import Global from '../Utilities/Global'
+import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js'
 // import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js'
 
 export default class Environment {
@@ -29,6 +30,8 @@ export default class Environment {
         this.gltfLoader = new GLTFLoader()
         // this.setSceneBackground()
         this.addRoom()
+        this.addWhiteboardContent()
+        this.addComputerScreen()
         this.addLights()
     }
 
@@ -74,6 +77,38 @@ export default class Environment {
 
     //     // this.scene.add(mesh);
     // }
+
+    private addWhiteboardContent(): void {
+        const element = document.createElement('div')
+        element.innerHTML = 'Hello World'
+        element.style.width = '20px'
+        element.style.height = '15px'
+        element.style.background = 'rgba(255, 255, 255, 0)'
+        element.style.color = '#000000'
+        element.style.fontSize = '1px'
+
+        const object = new CSS3DObject(element)
+        object.position.set(-26.2, 28, -3)
+        object.rotation.set(MathUtils.degToRad(0), MathUtils.degToRad(45), 0)
+
+        Global.cssScene.add(object);
+    }
+
+    private addComputerScreen(): void {
+        const element = document.createElement('div')
+        element.innerHTML = 'Hello World'
+        element.style.width = '13px'
+        element.style.height = '6px'
+        element.style.background = 'rgba(255, 255, 255, 1)'
+        element.style.color = '#000000'
+        element.style.fontSize = '0.5px'
+
+        const object = new CSS3DObject(element)
+        object.position.set(16.8, 8, 7.5)
+        object.rotation.set(MathUtils.degToRad(0), MathUtils.degToRad(-45), 0)
+
+        Global.cssScene.add(object);
+    }
 
     private addLights(): void {
         // this.addAmbientLight()
