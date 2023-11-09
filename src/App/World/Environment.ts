@@ -3,10 +3,6 @@ import {
     // Color,
     // DirectionalLight,
     MathUtils,
-    Mesh,
-    MeshLambertMaterial,
-    NoBlending,
-    PlaneGeometry,
     PointLight,
     Scene,
     // SpotLight,
@@ -15,7 +11,6 @@ import { GLTF, GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
 
 import Global from '../Utilities/Global'
 import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js'
-// import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js'
 
 export default class Environment {
     // private readonly backgroundColorCode: number = 0xaaccff
@@ -46,37 +41,6 @@ export default class Environment {
         roomModel.scene.rotateY(MathUtils.degToRad(45))
         this.scene.add(roomModel.scene)
     }
-
-    // private addPortraitImage(): void {
-    //     const element = document.createElement('div')
-    //     element.innerHTML = 'Hello World'
-    //     element.style.width = '7.5px'
-    //     element.style.height = '14.5px'
-    //     element.style.background = '#ff0000'
-    //     element.style.color = '#000000'
-    //     element.style.fontSize = '0.5px'
-
-    //     const object = new CSS3DObject(element)
-    //     object.position.set(25.6, 8.4, -2.4)
-    //     object.rotation.set(MathUtils.degToRad(0), -0.78, 0)
-
-    //     Global.cssScene.add(object);
-
-    //     // const geometry = new PlaneGeometry(7.5, 14.5)
-
-    //     // const material = new MeshStandardMaterial()
-    //     // material.blending = NoBlending
-    //     // material.opacity = 0
-    //     // material.transparent = true
-
-    //     // const mesh = new Mesh(geometry, material)
-        
-    //     // mesh.position.copy(object.position);
-    //     // mesh.rotation.copy(object.rotation);
-    //     // mesh.scale.copy(object.scale);
-
-    //     // this.scene.add(mesh);
-    // }
 
     private addWhiteboardContent(): void {
         const element = document.createElement('div')
