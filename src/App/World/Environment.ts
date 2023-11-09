@@ -7,10 +7,12 @@ import {
     Scene,
     // SpotLight,
 } from 'three'
-import { GLTF, GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
-
-import Global from '../Utilities/Global'
 import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js'
+import { GLTF, GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
+import ReactDOM from 'react-dom/client'
+
+import ComputerMonitorScreen from '../UI/ComputerMonitorScreen'
+import Global from '../Utilities/Global'
 
 export default class Environment {
     // private readonly backgroundColorCode: number = 0xaaccff
@@ -55,23 +57,19 @@ export default class Environment {
         object.position.set(-26.2, 28, -3)
         object.rotation.set(MathUtils.degToRad(0), MathUtils.degToRad(45), 0)
 
-        Global.cssScene.add(object);
+        Global.cssScene.add(object)
     }
 
     private addComputerScreen(): void {
         const element = document.createElement('div')
-        element.innerHTML = 'Hello World'
-        element.style.width = '13px'
-        element.style.height = '6px'
-        element.style.background = 'rgba(255, 255, 255, 1)'
-        element.style.color = '#000000'
-        element.style.fontSize = '0.5px'
 
         const object = new CSS3DObject(element)
         object.position.set(16.8, 8, 7.5)
         object.rotation.set(MathUtils.degToRad(0), MathUtils.degToRad(-45), 0)
 
-        Global.cssScene.add(object);
+        Global.cssScene.add(object)
+
+        ReactDOM.createRoot(element).render(ComputerMonitorScreen())
     }
 
     private addLights(): void {
