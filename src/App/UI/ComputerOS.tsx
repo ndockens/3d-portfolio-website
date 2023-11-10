@@ -15,9 +15,6 @@ export default function ComputerOS(): JSX.Element {
 }
 
 const style = {
-    background: 'rgba(255, 255, 255, 1)',
-    color: '#000000',
-    fontSize: '0.4px',
     height: '6px',
     width: '13px',
 }

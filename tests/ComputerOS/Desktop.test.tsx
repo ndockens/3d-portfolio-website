@@ -1,17 +1,47 @@
 import { render, screen } from '@testing-library/react'
+import userEvent, { UserEvent } from '@testing-library/user-event'
+import '@testing-library/jest-dom'
 
 import Desktop from '../../src/App/UI/Desktop'
+
+const user: UserEvent = userEvent.setup()
 
 function renderDesktop(): void {
     render(<Desktop />)
 }
 
+function getAppShortcut(name: string): HTMLElement {
+    return screen.getByTestId(`app-shortcut-${name}`)
+}
+
+async function clickAppShortcut(name: string): Promise<void> {
+    const shortcut: HTMLElement = getAppShortcut(name)
+    return user.click(shortcut)
+}
+
 describe('Desktop', () => {
-    test('A shortcut to the "profile" app is displayed', async () => {
+    test('Displays an area for app shortcuts', async () => {
         renderDesktop()
 
-        const profileShortcut: HTMLElement = screen.getByText('Profile')
+        const appShortcutArea: HTMLElement = screen.getByTestId('app-shortcut-area')
 
-        expect(profileShortcut).toBeTruthy()
+        expect(appShortcutArea).toBeTruthy()
+    })
+
+    test('Displays a shortcut to the "projects" app', async () => {
+        renderDesktop()
+
+        const projectsShortcut: HTMLElement = getAppShortcut('projects')
+
+        expect(projectsShortcut).toBeTruthy()
+    })
+
+    test('When user clicks the "projects" shortcut, opens the "projects" app', async () => {
+        renderDesktop()
+
+        await clickAppShortcut('projects')
+        const projectsAppMainScreen: HTMLElement = screen.getByTestId('projects-app-main-screen')
+
+        expect(projectsAppMainScreen).toBeTruthy()
     })
 })
