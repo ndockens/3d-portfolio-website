@@ -1,14 +1,14 @@
 import React from 'react'
 
-import ComputerDesktop from './ComputerDesktop'
+import Desktop from './Desktop'
 import SignInScreen from './SignInScreen'
 
-export default function ComputerMonitorScreen(): JSX.Element {
+export default function ComputerOS(): JSX.Element {
     const [signedIn, setSignedIn] = React.useState(false)
     return (
         <div style={style}>
             {signedIn
-                ? <ComputerDesktop />
+                ? <Desktop />
                 : <SignInScreen signIn={() => setSignedIn(true)} />}
         </div>
         )

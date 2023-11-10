@@ -11,7 +11,7 @@ import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js'
 import { GLTF, GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
 import ReactDOM from 'react-dom/client'
 
-import ComputerMonitorScreen from '../UI/ComputerMonitorScreen'
+import ComputerOS from '../UI/ComputerOS'
 import Global from '../Utilities/Global'
 
 export default class Environment {
@@ -69,7 +69,7 @@ export default class Environment {
 
         Global.cssScene.add(object)
 
-        ReactDOM.createRoot(element).render(<ComputerMonitorScreen />)
+        ReactDOM.createRoot(element).render(<ComputerOS />)
     }
 
     private addLights(): void {

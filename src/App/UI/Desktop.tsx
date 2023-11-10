@@ -1,4 +1,4 @@
-export default function ComputerDesktop(): JSX.Element {
+export default function Desktop(): JSX.Element {
     return (
         <div data-testid='desktop'>
             <div>Profile</div>
