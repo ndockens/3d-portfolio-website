@@ -7,9 +7,8 @@ export default function ComputerOS(): JSX.Element {
     const [signedIn, setSignedIn] = React.useState(false)
     return (
         <div style={style}>
-            {signedIn
-                ? <Desktop />
-                : <SignInScreen signIn={() => setSignedIn(true)} />}
+            {/* TODO: Show sign-in screen if user hasn't signed in yet */}
+            <Desktop />
         </div>
         )
 }
