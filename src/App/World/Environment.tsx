@@ -69,7 +69,7 @@ export default class Environment {
 
         Global.cssScene.add(object)
 
-        ReactDOM.createRoot(element).render(ComputerMonitorScreen())
+        ReactDOM.createRoot(element).render(<ComputerMonitorScreen />)
     }
 
     private addLights(): void {
