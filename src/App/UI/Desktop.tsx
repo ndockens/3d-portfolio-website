@@ -19,7 +19,7 @@ export default function Desktop(): JSX.Element {
         )
 }
 
-const style = {
+const style: React.CSSProperties = {
     background: '#0055ff',
     color: '#ffffff',
     fontSize: '0.4px',
@@ -27,7 +27,7 @@ const style = {
     width: '100%',
 }
 
-const appShortcutAreaStyle = {
+const appShortcutAreaStyle: React.CSSProperties = {
     background: 'rgba(255, 255, 255, 0.5)',
     borderRadius: '1px',
     color: '#ffffff',
@@ -36,20 +36,20 @@ const appShortcutAreaStyle = {
     width: '100%',
 }
 
-const shortcutStyle = {
+const shortcutStyle: React.CSSProperties = {
     display: 'inline-block',
     height: '1px',
     width: '1px',
     margin: '0.5px',
 }
 
-const shortcutIconStyle = {
+const shortcutIconStyle: React.CSSProperties = {
     background: '#00ff00',
     height: '0.5px',
     width: '0.5px',
     margin: 'auto',
 }
 
-const shortcutTitleStyle = {
+const shortcutTitleStyle: React.CSSProperties = {
     fontSize: '0.4px',
 }

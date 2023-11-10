@@ -6,7 +6,7 @@ export default function SignInScreen(props: any): JSX.Element {
         )
 }
 
-const style = {
+const style: React.CSSProperties = {
     background: 'rgba(255, 255, 255, 1)',
     color: '#000000',
     fontSize: '0.4px',
