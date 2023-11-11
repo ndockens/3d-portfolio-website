@@ -35,4 +35,11 @@ describe('Computer OS', () => {
 
         expect(desktop).toBeTruthy()
     })
+    xtest('When first loaded, displays the desktop', () => {
+        renderComputerOS()
+
+        const desktop: HTMLElement = screen.getByTestId('desktop')
+
+        expect(desktop).toBeTruthy()
+    })
 })

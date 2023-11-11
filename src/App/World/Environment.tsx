@@ -62,10 +62,13 @@ export default class Environment {
 
     private addComputerScreen(): void {
         const element = document.createElement('div')
+        element.style.height = '1024px'
+        element.style.width = '1280px'
 
         const object = new CSS3DObject(element)
         object.position.set(16.8, 8, 7.5)
         object.rotation.set(MathUtils.degToRad(0), MathUtils.degToRad(-45), 0)
+        object.scale.setScalar(0.01)
 
         Global.cssScene.add(object)
 

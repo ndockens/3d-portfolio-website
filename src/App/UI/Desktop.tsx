@@ -9,6 +9,10 @@ export default function Desktop(): JSX.Element {
             {activeApp !== null
                 ? <ProjectsApp />
                 : <div data-testid='app-shortcut-area' style={appShortcutAreaStyle}>
+                    <div data-testid='app-shortcut-jobs' style={shortcutStyle}>
+                        <div style={shortcutIconStyle}></div>
+                        <div style={shortcutTitleStyle}>Jobs</div>
+                    </div>
                     <div data-testid='app-shortcut-projects' style={shortcutStyle} onClick={() => setActiveApp('projects')}>
                         <div style={shortcutIconStyle}></div>
                         <div style={shortcutTitleStyle}>Projects</div>
@@ -20,36 +24,40 @@ export default function Desktop(): JSX.Element {
 }
 
 const style: React.CSSProperties = {
-    background: '#0055ff',
+    background: '#000000',
     color: '#ffffff',
-    fontSize: '0.4px',
     height: '100%',
     width: '100%',
 }
 
 const appShortcutAreaStyle: React.CSSProperties = {
-    background: 'rgba(255, 255, 255, 0.5)',
-    borderRadius: '1px',
+    position: 'absolute',
+    // background: 'rgba(255, 255, 255, 0.5)',
+    border: '15px solid white',
+    borderRadius: '50px',
+    boxShadow: '0px 0px 20px white',
     color: '#ffffff',
-    fontSize: '0.4px',
-    height: '100%',
-    width: '100%',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
 }
 
 const shortcutStyle: React.CSSProperties = {
     display: 'inline-block',
-    height: '1px',
-    width: '1px',
-    margin: '0.5px',
+    height: '200px',
+    width: '200px',
+    margin: '20px',
 }
 
 const shortcutIconStyle: React.CSSProperties = {
-    background: '#00ff00',
-    height: '0.5px',
-    width: '0.5px',
-    margin: 'auto',
+    background: 'white',
+    height: '120px',
+    width: '120px',
+    margin: '12px auto',
 }
 
 const shortcutTitleStyle: React.CSSProperties = {
-    fontSize: '0.4px',
+    fontSize: '30px',
+    marginTop: '12px',
+    textAlign: 'center',
 }

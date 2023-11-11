@@ -1,3 +1,3 @@
 export default function ProjectsApp() {
-    return <div data-testid='projects-app-main-screen'></div>
+    return <div data-testid='projects-app'></div>
 }

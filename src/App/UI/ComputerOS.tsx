@@ -13,7 +13,4 @@ export default function ComputerOS(): JSX.Element {
         )
 }
 
-const style: React.CSSProperties = {
-    height: '6px',
-    width: '13px',
-}
+const style: React.CSSProperties = {}

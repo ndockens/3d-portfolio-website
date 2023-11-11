@@ -28,6 +28,14 @@ describe('Desktop', () => {
         expect(appShortcutArea).toBeTruthy()
     })
 
+    test('Displays a shortcut to the "jobs" app', async () => {
+        renderDesktop()
+
+        const jobsShortcut: HTMLElement = getAppShortcut('jobs')
+
+        expect(jobsShortcut).toBeTruthy()
+    })
+
     test('Displays a shortcut to the "projects" app', async () => {
         renderDesktop()
 
@@ -40,7 +48,7 @@ describe('Desktop', () => {
         renderDesktop()
 
         await clickAppShortcut('projects')
-        const projectsAppMainScreen: HTMLElement = screen.getByTestId('projects-app-main-screen')
+        const projectsAppMainScreen: HTMLElement = screen.getByTestId('projects-app')
 
         expect(projectsAppMainScreen).toBeTruthy()
     })
